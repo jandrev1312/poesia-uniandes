@@ -1,0 +1,15 @@
+---
+import Layout from "./Layout.astro"
+---
+
+<Layout title="Starter">
+  <div class="blog-post">
+    <slot />
+  </div>
+</Layout>
+
+<style is:global>
+  .blog-post h1 {
+    @apply text-8xl;
+  }
+</style>
