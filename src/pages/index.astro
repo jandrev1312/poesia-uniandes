@@ -1,7 +1,66 @@
 ---
+import Card from "@/components/Card.astro"
+import type { Frontmatter } from "@/types"
+import type { MarkdownInstance } from "astro"
+import { Icon } from "astro-icon"
 import Layout from "../layouts/Layout.astro"
+
+const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob("./blog/*.mdx")
+const { frontmatter } = posts.find(
+  (p) => p.frontmatter.hero
+) as MarkdownInstance<Frontmatter>
 ---
 
-<Layout title="Astro Starter">
-  <h1>Starter for Astro</h1>
+<Layout title="Posts - Poesía Uniandes">
+  <div
+    class="flex items-center gap-x-12 mt-[84px] mb-24 mx-auto max-w-screen-2xl text-black"
+  >
+    <div class="w-1/2 h-[600px]">
+      <a href={`/blog/${frontmatter.href}`}>
+        <img
+          src={frontmatter.photoThumbnail}
+          alt="Hero image"
+          class="h-full object-cover hover:opacity-80 transition-opacity"
+        />
+      </a>
+    </div>
+    <div class="flex flex-col gap-y-8 w-1/2">
+      <a href={`/blog/${frontmatter.href}`}>
+        <h1 class="text-5xl leading-tight hover:underline">
+          {frontmatter.title}
+        </h1>
+      </a>
+      <div>
+        <a href={frontmatter.authorLink} target="_blank">
+          <div class="text-sm font-medium hover:underline">
+            {frontmatter.author}
+          </div>
+        </a>
+        <p class="text-xs">{frontmatter.date}</p>
+      </div>
+      <a
+        class="flex font-medium items-center gap-x-1 text-xl font-serif hover:scale-110 duration-200 ease-in w-fit"
+        href={`/blog/${frontmatter.href}`}
+      >
+        Leer<span><Icon name="akar-icons:arrow-right" class="w-5" /></span>
+      </a>
+    </div>
+  </div>
+  <div class="px-16 mx-auto max-w-screen-2xl">
+    <h3 class="text-4xl mb-8">Poemas de la semana</h3>
+    <div class="grid grid-cols-3 justify-items-center gap-y-16 mb-24">
+      {posts.map((p) => <Card {...p.frontmatter} />)}
+    </div>
+  </div>
+  <!-- <div class="px-16">
+    <h3 class="text-4xl mb-8">Artículos</h3>
+    <div class="flex flex-wrap justify-between gap-y-16 mb-16">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </div>
+  </div> -->
 </Layout>
