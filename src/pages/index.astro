@@ -5,7 +5,7 @@ import type { MarkdownInstance } from "astro"
 import { Icon } from "astro-icon"
 import Layout from "../layouts/Layout.astro"
 
-const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob("./blog/*.mdx")
+const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob("./blog/*.md")
 const { frontmatter } = posts.find(
   (p) => p.frontmatter.hero
 ) as MarkdownInstance<Frontmatter>
