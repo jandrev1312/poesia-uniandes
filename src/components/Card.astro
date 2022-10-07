@@ -1,45 +1,23 @@
 ---
 import { Icon } from "astro-icon"
+import { Image } from "@astrojs/image/components"
 
-interface Props {
-  photoThumbnail: string
-  author: string
-  authorLink: string
-  date: string
-  title: string
-  href: string
-}
-
-const { photoThumbnail, title, author, date, href, authorLink } =
-  Astro.props as Props
-const linkToArticle = `/blog/${href}`
+// const { imageUrl } = Astro.props
+const imageUrl =
+  "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
 ---
 
-<div class="w-[356px] flex flex-col">
-  <a href={linkToArticle} class="mb-4">
-    <img
-      src={photoThumbnail}
-      alt="Article card"
-      class="w-[356px] rounded-md aspect-square hover:opacity-70 drop-shadow-lg transition-opacity object-cover"
-    />
-  </a>
-  <div class="flex flex-col">
-    <a href={linkToArticle} class="mb-3">
-      <h3 class="text-2xl hover:underline">{title}</h3>
-    </a>
-    <div class="flex justify-between">
-      <div>
-        <a href={authorLink} target="_blank">
-          <div class="text-sm font-medium hover:underline">{author}</div>
-        </a>
-        <p class="text-xs">{date}</p>
-      </div>
-      <a
-        class="flex font-medium items-center text-xl hover:scale-110 duration-200 ease-in font-serif"
-        href={linkToArticle}
-      >
-        Leer<span><Icon name="akar-icons:arrow-right" class="w-5 ml-1" /></span>
-      </a>
+<article class="w-full space-y-3 max-w-2xl">
+  <Image src={imageUrl} alt="Card image" height={500} aspectRatio={3 / 2} />
+  <h3 class="font-medium text-2xl">Lorem ipsum</h3>
+  <div class="flex justify-between items-center">
+    <div class="text-sm">
+      <div class="">Por Michel Djerzinski</div>
+      <div class="font-light">YYYY-MM-DD</div>
+    </div>
+    <div class="flex items-end space-x-1">
+      <div class="font-serif font-medium text-xl">Leer</div>
+      <Icon name="akar-icons:arrow-up" class="rotate-90 w-6" />
     </div>
   </div>
-</div>
+</article>

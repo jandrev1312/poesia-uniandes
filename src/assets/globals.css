@@ -1,0 +1,3 @@
+.grow-container {
+  @apply mx-auto lg:max-w-screen-xl lg:px-16;
+}

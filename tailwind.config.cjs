@@ -6,12 +6,16 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Work Sans", ...defaultTheme.fontFamily.sans],
-        serif: ["Prata", ...defaultTheme.fontFamily.serif],
+        serif: ["Playfair Display", ...defaultTheme.fontFamily.serif],
       },
       colors: {
-        floralWhite: "#f9f7f0",
-        instagramPink: "#dd2a7b",
-        facebookBlue: "#4267B2",
+        primary: "#F6D7A7",
+        secondary: "#F6EABE",
+        extra1: "#C8E3D4",
+        extra2: "#87AAAA",
+        instagram: "#dd2a7b",
+        facebook: "#4267B2",
+        twitter: "#1DA1F2",
       },
     },
   },

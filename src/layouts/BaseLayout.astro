@@ -1,0 +1,37 @@
+---
+import Navbar from "@/components/Navbar"
+import "@fontsource/playfair-display"
+import "@/assets/globals.css"
+
+const { title } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <body class="flex flex-col h-full">
+    <Navbar client:load />
+    <div class="grow">
+      <slot />
+    </div>
+    <slot name="footer" />
+    <style is:global>
+      html,
+      body {
+        height: 100vh;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display";
+      }
+    </style>
+  </body>
+</html>

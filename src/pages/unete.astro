@@ -1,0 +1,33 @@
+---
+import MeetingMap from "@/components/MeetingMap.astro"
+import SecondaryLayout from "@/layouts/SecondaryLayout.astro"
+---
+
+<SecondaryLayout>
+  <div
+    class="px-4 text-center py-12 flex flex-col space-y-12 max-w-md mx-auto lg:flex-row lg:text-left lg:space-y-0 lg:justify-between lg:max-w-screen-xl lg:px-16 lg:py-0 lg:items-center lg:space-x-10 h-full"
+  >
+    <div class="space-y-12 max-w-sm">
+      <div class="space-y-7">
+        <h1 class="text-4xl lg:text-5xl font-medium">Únete</h1>
+        <p class="text-lg lg:text-2xl">
+          Ven a escuchar o declamar poesía, cuentos, narraciones y más.
+        </p>
+      </div>
+      <div class="space-y-5">
+        <h2 class="font-medium text-2xl lg:text-3xl">Horario</h2>
+        <p class="text-lg lg:text-xl">Todos los viernes desde las 5 pm</p>
+      </div>
+      <div class="space-y-5">
+        <h2 class="font-medium text-2xl lg:text-3xl">Lugar</h2>
+        <p class="text-lg lg:text-xl">
+          Plazoleta del CAI, Universidad de los Andes
+        </p>
+      </div>
+    </div>
+    <div class="space-y-5 w-full">
+      <h2 class="font-medium text-2xl lg:hidden">Mapa</h2>
+      <MeetingMap />
+    </div>
+  </div>
+</SecondaryLayout>

@@ -1,41 +1,67 @@
 ---
-import type { Frontmatter } from "@/types"
-import { AppConfig } from "@/utils/AppConfig"
-import Layout from "./Layout.astro"
+import { Icon } from "astro-icon"
+import SecondaryLayout from "./SecondaryLayout.astro"
+import { Image } from "@astrojs/image/components"
 
-interface Props {
-  frontmatter: Frontmatter
-}
-
-const { frontmatter } = Astro.props as Props
-const titleSuffix = ` - ${AppConfig.site_name}`
-const titlePost = frontmatter.title
-const title = titlePost + titleSuffix
+const { title, author, date } = Astro.props
+const imageUrl =
+  "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
 ---
 
-<Layout title={title} description={frontmatter.description}>
-  <div
-    class="max-w-2xl flex flex-col items-center mx-auto mt-[83px] pt-12 mb-20"
-  >
-    <img
-      src={frontmatter.photoThumbnail}
-      alt="Post image"
-      class="w-full h-80 rounded-2xl mb-10"
-    />
-    <div class="flex flex-col items-center text-center mb-10">
-      <h2 class="text-5xl leading-snug mb-8">{frontmatter.title}</h2>
+<SecondaryLayout>
+  <div class="text-center lg:text-left">
+    <div
+      class="py-12 px-4 grow-container flex flex-col space-y-12 max-w-screen-xl mx-auto"
+    >
       <div>
-        <a href={frontmatter.authorLink} target="_blank">
-          <div class="text-sm font-medium hover:underline">
-            {frontmatter.author}
+        <h1 class="font-medium text-4xl mb-3 lg:text-5xl">
+          What a time to be alive!
+        </h1>
+        <a class="mb-2 text-lg font-light lg:text-xl">By Michel Djerzinski</a>
+        <div class="font-light text-sm">YYYY-MM-DD</div>
+      </div>
+      <hr class="w-full h-px bg-black/50" />
+      <div class="flex flex-col space-y-12 lg:space-y-0 lg:flex-row">
+        <!-- Imagen + Artículo -->
+        <div class="flex flex-col space-y-12 max-w-xl mx-auto lg:mx-0">
+          <Image
+            src={imageUrl}
+            alt="Article image"
+            width={576}
+            aspectRatio={3 / 2}
+          />
+          <div class="text-left text-lg">
+            <slot />
           </div>
-        </a>
-        <p class="text-xs">{frontmatter.date}</p>
+        </div>
+        <!-- Sección para compartir en redes -->
+        <div class="mx-auto">
+          <!-- Wrapper para fixed -->
+          <div class="sticky top-20 space-y-5 mx-auto lg:mx-0">
+            <strong class="text-sm text-black/50 uppercase"
+              >Comparte este escrito en redes</strong
+            >
+            <div class="flex items-center space-x-6 justify-center">
+              <Icon
+                name="akar-icons:twitter-fill"
+                class="w-8 hover:text-black/70"
+              />
+              <Icon
+                name="akar-icons:facebook-fill"
+                class="w-8 hover:text-black/70"
+              />
+              <Icon
+                name="akar-icons:instagram-fill"
+                class="w-8 hover:text-black/70"
+              />
+              <Icon
+                name="akar-icons:link-chain"
+                class="w-8 hover:text-black/70"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="w-full h-[1px] bg-gray-300 mb-10"></div>
-    <div class="w-full text-lg flex flex-col">
-      <slot />
-    </div>
   </div>
-</Layout>
+</SecondaryLayout>
