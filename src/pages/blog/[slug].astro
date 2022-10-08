@@ -1,0 +1,21 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro"
+import { getBlogLinks, getPost, getSanityClient } from "@/utils/helpers"
+
+export async function getStaticPaths() {
+  const client = getSanityClient()
+  const links = await getBlogLinks(client)
+  return links.map((singleLink) => ({ params: { slug: singleLink } }))
+}
+
+const client = getSanityClient()
+const { slug } = Astro.params
+const { image, name, publishedAt, text, title } = await getPost(
+  client,
+  slug as string
+)
+---
+
+<BlogLayout image={image} name={name} publishedAt={publishedAt} title={title}>
+  <p class="whitespace-pre-wrap">{text}</p>
+</BlogLayout>

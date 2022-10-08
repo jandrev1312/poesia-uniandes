@@ -1,12 +1,40 @@
 import { v4 as uuidv4 } from "uuid"
 import SimpleFooter from "./SimpleFooter"
 
+// const contactInfo = {
+//   Correo: "poesia@uniandes.edu.co",
+//   Instagram: "@poesiauniandes",
+//   Facebook: "poesia.uniandes",
+//   Ubicación: "Viernes a las 5 pm en la Plazoleta del CAI",
+//   Protocolo: "Código de conducta",
+// }
+
 const contactInfo = {
-  Correo: "poesia@uniandes.edu.co",
-  Instagram: "@poesiauniandes",
-  Facebook: "poesia.uniandes",
-  Ubicación: "Viernes a las 5 pm en la Plazoleta del CAI",
-  Protocolo: "Código de conducta",
+  Correo: {
+    text: "poesia@uniandes.edu.co",
+    link: "mailto:poesia@uniandes.edu.co",
+    newTab: true,
+  },
+  Instagram: {
+    text: "@poesiauniandes",
+    link: "https://www.instagram.com/poesiauniandes/",
+    newTab: true,
+  },
+  Facebook: {
+    text: "poesia.uniandes",
+    link: "https://www.facebook.com/poesia.uniandes",
+    newTab: true,
+  },
+  Ubicación: {
+    text: "Viernes a las 5 pm en la Plazoleta del CAI",
+    link: "https://goo.gl/maps/mwW8fvwpYrNRuPaH8",
+    newTab: true,
+  },
+  Protocolo: {
+    text: "Código de conducta",
+    link: "/codigo-de-conducta",
+    newTab: false,
+  },
 }
 
 const Footer = () => {
@@ -27,8 +55,10 @@ const Footer = () => {
               key={uuidv4()}
               className="text-sm space-y-2 max-w-[150px] mx-auto lg:mx-0"
             >
-              <h6 className="font-sans font-medium uppercase">{subtitle}</h6>
-              <a className="">{info}</a>
+              <h6 className="font-sans font-bold uppercase">{subtitle}</h6>
+              <a href={info.link} target={info.newTab ? "_target" : "_self"} className="turn-opacity">
+                {info.text}
+              </a>
             </div>
           ))}
         </div>

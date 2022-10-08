@@ -16,10 +16,13 @@ const Navbar = () => {
     <nav className="bg-secondary drop-shadow">
       <div className="py-2 px-4 flex justify-between items-center grow-container md:max-w-2xl">
         <div className="flex items-center space-x-8">
-          <div className="flex flex-col items-end w-fit">
+          <a
+            href="/"
+            className="flex flex-col items-end w-fit select-none turn-opacity"
+          >
             <h2 className="font-semibold text-3xl lg:text-4xl">Poesía</h2>
             <div className="text-xs lg:text-sm">Uniandes</div>
-          </div>
+          </a>
           {isDesktop && (
             <strong className="font-serif font-medium text-lg">
               Algo más que poesía
@@ -29,10 +32,14 @@ const Navbar = () => {
         {/* Desktop buttons */}
         {isDesktop && (
           <div className="space-x-6">
-            <a className="text-sm">Contacto</a>
-            <button className="px-4 py-2 text-white text-md rounded-md bg-extra2 font-bold">
-              Únete
-            </button>
+            <a href="/contacto" className="text-sm turn-opacity">
+              Contacto
+            </a>
+            <a href="/unete">
+              <button className="px-4 py-2 turn-opacity text-white text-md rounded-md bg-extra2 font-bold">
+                Únete
+              </button>
+            </a>
           </div>
         )}
         {/* Mobile nav menu button */}
@@ -52,10 +59,12 @@ const Navbar = () => {
       {/* Mobile menu */}
       {openedMenu && (
         <div className="px-4 flex flex-col py-10 space-y-10 items-center text-xl">
-          <a>Contacto</a>
-          <button className="font-bold rounded-md text-white py-3 bg-extra2 w-full">
-            Únete
-          </button>
+          <a className="turn-opacity">Contacto</a>
+          <a href="/unete">
+            <button className="font-bold turn-opacity rounded-md text-white py-3 bg-extra2 w-full">
+              Únete
+            </button>
+          </a>
         </div>
       )}
     </nav>
