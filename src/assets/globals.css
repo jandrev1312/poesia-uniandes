@@ -1,3 +1,6 @@
 .grow-container {
   @apply mx-auto lg:max-w-screen-xl lg:px-16;
 }
+.turn-opacity {
+  @apply hover:opacity-50 transition-opacity;
+}

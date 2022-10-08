@@ -2,6 +2,10 @@
 import MainLayout from "@/layouts/MainLayout.astro"
 import Card from "@/components/Card.astro"
 import { Icon } from "astro-icon"
+import { getPostsPreview, getSanityClient } from "@/utils/helpers"
+
+const client = getSanityClient()
+const posts = await getPostsPreview(client)
 ---
 
 <MainLayout>
@@ -16,7 +20,7 @@ import { Icon } from "astro-icon"
     </div>
     <Icon name="akar-icons:arrow-up" class="rotate-180 w-14" />
   </section>
-  <section class=" bg-secondary">
+  <section class="bg-secondary">
     <div class="py-12 lg:py-16 px-4 space-y-8 grow-container">
       <h2
         class="text-2xl lg:text-3xl font-medium max-w-2xl mx-auto lg:max-w-screen-xl"
@@ -24,13 +28,9 @@ import { Icon } from "astro-icon"
         Publicaciones
       </h2>
       <div
-        class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:justify-between max-w-2xl mx-auto md:gap-y-10 md:justify-items-stretch md:gap-x-7 lg:max-w-screen-xl lg:grid-cols-3"
+        class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:justify-between max-w-2xl mx-auto md:gap-y-10 md:justify-items-stretch md:gap-x-14   lg:max-w-screen-xl lg:grid-cols-3"
       >
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {posts.map((post) => <Card {...post} />)}
       </div>
     </div>
   </section>

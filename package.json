@@ -15,17 +15,21 @@
     "@fontsource/playfair-display": "^4.5.12",
     "@fontsource/work-sans": "^4.5.12",
     "@sanity/cli": "^2.34.0",
+    "@sanity/client": "^3.4.1",
+    "@types/node": "^18.8.3",
     "@types/uuid": "^8.3.4",
     "astro": "^1.1.7",
     "astro-icon": "^0.7.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "sharp": ">=0.31.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@astrojs/image": "^0.6.0",
     "@astrojs/tailwind": "^1.0.0",
     "@iconify-icon/react": "^1.0.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@types/react": "^18.0.21",
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.5.4"

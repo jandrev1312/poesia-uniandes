@@ -1,11 +1,11 @@
 ---
 import { Icon } from "astro-icon"
 import SecondaryLayout from "./SecondaryLayout.astro"
-import { Image } from "@astrojs/image/components"
+import type { PostProps } from "@/types"
 
-const { title, author, date } = Astro.props
-const imageUrl =
-  "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+interface Props extends Omit<PostProps, "text"> {}
+
+const { title, name, image, publishedAt } = Astro.props
 ---
 
 <SecondaryLayout>
@@ -15,21 +15,18 @@ const imageUrl =
     >
       <div>
         <h1 class="font-medium text-4xl mb-3 lg:text-5xl">
-          What a time to be alive!
+          {title}
         </h1>
-        <a class="mb-2 text-lg font-light lg:text-xl">By Michel Djerzinski</a>
-        <div class="font-light text-sm">YYYY-MM-DD</div>
+        <a class="mb-2 text-lg font-light lg:text-xl">Por {name}</a>
+        <div class="font-light text-sm">{publishedAt}</div>
       </div>
       <hr class="w-full h-px bg-black/50" />
       <div class="flex flex-col space-y-12 lg:space-y-0 lg:flex-row">
         <!-- Imagen + Artículo -->
-        <div class="flex flex-col space-y-12 max-w-xl mx-auto lg:mx-0">
-          <Image
-            src={imageUrl}
-            alt="Article image"
-            width={576}
-            aspectRatio={3 / 2}
-          />
+        <div class="flex flex-col space-y-12 w-full max-w-xl mx-auto lg:mx-0">
+          <div class="aspect-w-3 aspect-h-2">
+            <img src={image} alt="Article image" width={576} class="object-cover" />
+          </div>
           <div class="text-left text-lg">
             <slot />
           </div>

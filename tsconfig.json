@@ -11,6 +11,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "importsNotUsedAsValues": "error",
-    "types": ["@astrojs/image/client"]
-  }
+    "types": ["node"],
+    "jsx": "react-jsx"
+  },
+  "extends": "astro/tsconfigs/strict"
 }

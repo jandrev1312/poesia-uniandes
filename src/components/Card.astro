@@ -1,23 +1,34 @@
 ---
 import { Icon } from "astro-icon"
-import { Image } from "@astrojs/image/components"
+import type { PostPreviewProps } from "@/types"
 
-// const { imageUrl } = Astro.props
-const imageUrl =
-  "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+const { title, image, name, publishedAt, slug } =
+  Astro.props as PostPreviewProps
+
+const articleLink = `/blog/${slug}`
 ---
 
-<article class="w-full space-y-3 max-w-2xl">
-  <Image src={imageUrl} alt="Card image" height={500} aspectRatio={3 / 2} />
-  <h3 class="font-medium text-2xl">Lorem ipsum</h3>
-  <div class="flex justify-between items-center">
+<article class="w-full space-y-3 max-w-2xl h-full">
+  <div class="flex flex-col space-y-3">
+    <a href={articleLink} class="w-full aspect-w-3 aspect-h-2">
+      <img src={image} alt="Card image" height={500} class="turn-opacity object-cover" />
+    </a>
+    <a href={articleLink}>
+      <h3 class="font-medium text-2xl line-clamp-none turn-opacity">
+        {title}
+      </h3>
+    </a>
+  </div>
+  <div class="flex justify-between items-center space-x-5">
     <div class="text-sm">
-      <div class="">Por Michel Djerzinski</div>
-      <div class="font-light">YYYY-MM-DD</div>
+      <div class="">Por {name}</div>
+      <div class="font-light">{publishedAt}</div>
     </div>
-    <div class="flex items-end space-x-1">
-      <div class="font-serif font-medium text-xl">Leer</div>
-      <Icon name="akar-icons:arrow-up" class="rotate-90 w-6" />
-    </div>
+    <a href={articleLink}>
+      <div class="flex items-end space-x-1 turn-opacity">
+        <div class="font-serif font-medium text-xl">Leer</div>
+        <Icon name="akar-icons:arrow-up" class="rotate-90 w-6" />
+      </div>
+    </a>
   </div>
 </article>
