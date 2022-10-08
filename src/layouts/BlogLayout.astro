@@ -21,10 +21,10 @@ const { title, name, image, publishedAt } = Astro.props
         <div class="font-light text-sm">{publishedAt}</div>
       </div>
       <hr class="w-full h-px bg-black/50" />
-      <div class="flex flex-col space-y-12 lg:space-y-0 lg:flex-row">
+      <div class="w-full flex flex-col space-y-12 lg:space-y-0 lg:flex-row">
         <!-- Imagen + Artículo -->
-        <div class="flex flex-col space-y-12 w-full max-w-xl mx-auto lg:mx-0">
-          <div class="aspect-w-3 aspect-h-2">
+        <div class="flex flex-col space-y-12 w-full grow mx-auto lg:mx-0">
+          <div class="aspect-w-3 aspect-h-1">
             <img src={image} alt="Article image" width={576} class="object-cover" />
           </div>
           <div class="text-left text-lg">
@@ -32,8 +32,7 @@ const { title, name, image, publishedAt } = Astro.props
           </div>
         </div>
         <!-- Sección para compartir en redes -->
-        <div class="mx-auto">
-          <!-- Wrapper para fixed -->
+        <!-- <div class="mx-auto">
           <div class="sticky top-20 space-y-5 mx-auto lg:mx-0">
             <strong class="text-sm text-black/50 uppercase"
               >Comparte este escrito en redes</strong
@@ -57,7 +56,7 @@ const { title, name, image, publishedAt } = Astro.props
               />
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
