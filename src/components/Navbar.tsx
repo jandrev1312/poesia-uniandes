@@ -60,7 +60,7 @@ const Navbar = () => {
       {openedMenu && (
         <div className="px-4 flex flex-col py-10 space-y-10 items-center text-xl">
           <a className="turn-opacity">Contacto</a>
-          <a href="/unete">
+          <a href="/unete" className="w-full">
             <button className="font-bold turn-opacity rounded-md text-white py-3 bg-extra2 w-full">
               Únete
             </button>
